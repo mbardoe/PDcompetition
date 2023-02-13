@@ -3,7 +3,7 @@ from random import random
 from strategy import Strategy
 
 
-class Tournament():
+class Tournament(object):
 
     def __init__(self, strategies: list[Strategy], num_rounds: int):
         self.strategies = strategies
@@ -50,7 +50,7 @@ class RandomTournament(Tournament):
 
     def __init__(self, strategies, prob_continue=0.5):
         super().__init__(strategies, 1)
-        if prob_continue>1 or prob_continue<0:
+        if prob_continue > 1 or prob_continue < 0:
             raise ValueError("Probability must be between 0 and 1")
         self.prob_continue = prob_continue
 
@@ -75,7 +75,7 @@ class RandomTournament(Tournament):
                     player1.update_score(outcome[0])
                     player2.update_score(outcome[1])
                     k += 1
-                    next_round=random()
+                    next_round = random()
                     if next_round > self.prob_continue:
                         cont = False
 
